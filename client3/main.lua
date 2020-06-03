@@ -1,6 +1,6 @@
 -- Client
 local enet = require("enet")
-local game = require("../game")
+local game = require("game")
 
 local client_name = 'Player_3'
 
@@ -61,14 +61,14 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.printf(table.concat(messages, '\n'), 200, 100, 350, 'center')
+    love.graphics.printf(table.concat(messages, '\n'), 200, 100, 300)
     if game.loaded then
         game:draw()
     end
 end
 
 function love.keypressed(key)
-  if game.loaded and (game.client_info.player_id == game.state.curr_player_id) then
-      transmit_keystroke(key, server)
-  end
+    if game.loaded and (game.client_info.player_id == game.state.curr_player_id) then
+        transmit_keystroke(key, server)
+    end
 end

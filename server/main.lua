@@ -1,6 +1,5 @@
 -- Server
 local enet = require("enet")
-local game = require("game")
 
 local function server_side_input_handler(event)
     --[[
@@ -49,8 +48,8 @@ function love.update(dt)
                 end
             else
                 -- normal things
+                messages[#messages+1] = string.format(event.data)
                 host:broadcast(event.data)
-                messages[#messages+1] = string.format('Broadcast %s', event.data)
             end
         end
    end
